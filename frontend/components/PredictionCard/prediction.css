@@ -1,0 +1,141 @@
+.prediction-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  box-shadow: var(--shadow-card);
+}
+
+.prediction-card.locked {
+  opacity: 0.7;
+}
+
+.prediction-match-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.pred-team {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pred-team.right {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.pred-flag { font-size: 1.1rem; }
+
+.pred-inputs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.score-input {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-blue);
+  border: 2px solid var(--border-card);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card-alt);
+  outline: none;
+  transition: border-color 0.2s;
+  padding: 0;
+}
+
+.score-input:focus {
+  border-color: var(--color-blue-mid);
+}
+
+.score-input:disabled {
+  background: #f0f0f0;
+  color: var(--text-muted);
+}
+
+.score-sep {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+.pred-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.btn-save-pred {
+  background: var(--color-red);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: background 0.2s;
+}
+
+.btn-save-pred:hover { background: var(--color-red-dark); }
+.btn-save-pred:disabled { background: #ccc; cursor: not-allowed; }
+
+.pred-points-badge {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  padding: 3px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+}
+
+.pred-points-badge.pts-3 {
+  background: #d4edda;
+  color: #1a6630;
+}
+
+.pred-points-badge.pts-1 {
+  background: var(--color-gold-light);
+  color: #7a5800;
+}
+
+.pred-points-badge.pts-0 {
+  background: var(--color-red-light);
+  color: var(--color-red-dark);
+}
+
+.pred-points-badge.pts-pending {
+  background: var(--bg-page);
+  color: var(--text-muted);
+  border: 1px solid var(--border-light);
+}
+
+.pred-locked-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.saved-toast {
+  background: #d4edda;
+  color: #1a6630;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}

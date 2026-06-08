@@ -1,0 +1,4 @@
+/* Reset de estilos de bootstrap que interfieren */
+.btn:focus {
+  box-shadow: none;
+}
