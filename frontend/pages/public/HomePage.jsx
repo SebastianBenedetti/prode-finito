@@ -9,6 +9,7 @@ import AdminPanel from "../../components/AdminPanel/AdminPanel";
 import "./home.css";
 
 const TABS = ["Fixture", "Mi Prode", "Tabla", "Perfil"];
+const BASE = import.meta.env.VITE_API_URL || "/api";
 
 function groupMatches(matches) {
   const grouped = {};
@@ -55,7 +56,6 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero */}
       <div className="home-hero">
         <h1>
           PRODE <span>MUNDIAL</span>
@@ -63,7 +63,6 @@ export default function HomePage() {
         <p>USA · Canadá · México — 2026</p>
       </div>
 
-      {/* Tabs */}
       <div className="nav-tabs-prode">
         {TABS.map((t) => (
           <button
@@ -76,9 +75,7 @@ export default function HomePage() {
         ))}
       </div>
 
-      {/* Contenido */}
       <div className="section-block">
-        {/* ── FIXTURE ── */}
         {tab === "Fixture" && (
           <>
             {isAdmin && (
@@ -105,14 +102,12 @@ export default function HomePage() {
           </>
         )}
 
-        {/* ── MI PRODE ── */}
         {tab === "Mi Prode" && (
           <>
             <div className="section-title">MI PRODE</div>
             <div className="section-subtitle">
               Ingresá tus predicciones antes de cada partido
             </div>
-
             {loading ? (
               <p style={{ color: "var(--text-muted)" }}>Cargando partidos...</p>
             ) : (
@@ -141,7 +136,6 @@ export default function HomePage() {
           </>
         )}
 
-        {/* ── TABLA ── */}
         {tab === "Tabla" && (
           <>
             <div className="section-title">TABLA</div>
@@ -150,7 +144,6 @@ export default function HomePage() {
           </>
         )}
 
-        {/* ── PERFIL ── */}
         {tab === "Perfil" && <ProfileSection user={user} token={token} />}
       </div>
     </>
@@ -164,7 +157,7 @@ function ProfileSection({ user, token }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/api/users/${user.id}`)
+    fetch(`${BASE}/users/${user.id}`)
       .then((r) => r.json())
       .then((data) => {
         setBio(data.bio || "");
@@ -174,7 +167,7 @@ function ProfileSection({ user, token }) {
   }, [user.id]);
 
   const handleSave = async () => {
-    await fetch("/api/users/me", {
+    await fetch(`${BASE}/users/me`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

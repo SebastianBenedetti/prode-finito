@@ -13,11 +13,13 @@ export default function LoginPage() {
   const navigate = useNavigate();
 
   // Trae los usuarios del backend
+  const BASE = import.meta.env.VITE_API_URL || "/api";
+
   useEffect(() => {
-    fetch("/api/users")
+    fetch(`${BASE}/users`)
       .then((r) => r.json())
       .then((data) => setUsers(data))
-      .catch(() => {}); // si falla no pasa nada, igual pueden escribir el nombre
+      .catch(() => {});
   }, []);
 
   const handleLogin = async (name) => {

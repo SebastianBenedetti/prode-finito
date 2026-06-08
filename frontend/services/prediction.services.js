@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE = "/api";
+const BASE = import.meta.env.VITE_API_URL || "/api";
 
 export const getMyPredictions = async (token) => {
   const { data } = await axios.get(`${BASE}/predictions/my`, {
@@ -13,7 +13,7 @@ export const savePrediction = async (matchId, homeScore, awayScore, token) => {
   const { data } = await axios.post(
     `${BASE}/predictions`,
     { matchId, homeScore, awayScore },
-    { headers: { Authorization: `Bearer ${token}` } }
+    { headers: { Authorization: `Bearer ${token}` } },
   );
   return data;
 };
